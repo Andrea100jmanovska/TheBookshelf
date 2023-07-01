@@ -1,0 +1,5 @@
+
+    {% for category in categories %}
+         <li><a href="{% url 'category_detail' category.slug %}" class="nav-link text-white" style="text-decoration:none; ">{{ category.title }},</a></li>
+    {% endfor %}
+

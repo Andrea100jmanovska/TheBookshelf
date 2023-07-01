@@ -1,0 +1,40 @@
+{% extends 'core/base.html' %}
+{% block title %}
+{% firstof user.get_full_name user.username %}
+{% endblock %}
+{% block content %}
+<div class="container">
+<hr style="color:white;">
+<h5 class="card-text text-white" style="margin-left:120px;">{% firstof user.get_full_name user.username %}
+</h5>
+<hr style="color:white;">
+    </div>
+<div class="row row-cols-3">
+        {% for product in products %}
+        <div class="container p-5 pb-1">
+            <div class="card p-2" style="width: 25rem;">
+                <div class="row">
+                    <div class="col-2">
+                {% if product.image %}
+                        <div>
+                            <img class="card-img-left " src="{{ product.image.url }}" alt="Image of {{product.title}}" style="width:140px;height:200px">
+                        </div>
+                    {% endif %}
+                        </div>
+                    <div class="col-10">
+                        <div style="margin-left:65px; margin-bottom:-5px; " >
+                <div class="card-body">
+                    <a href="{% url 'product_detail' product.category.slug product.slug %}" style="text-decoration:none; color:black">
+                        <h4 class="card-title h5 h4-sm"> {{product.title}} - {{product.author}}</h4>
+                    </a>
+                    <p class="card-text"> Category: {{product.category}} <br></p>
+                        <h5> {{product.get_display_price}} € </h5><br>
+                </div>
+                            </div>
+                        </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+{% endblock %}

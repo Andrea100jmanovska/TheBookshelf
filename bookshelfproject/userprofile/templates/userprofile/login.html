@@ -1,0 +1,22 @@
+{% extends 'core/base.html' %}
+{% block title %}
+Login
+{% endblock %}
+{% block content %}
+<div class="container pt-5">
+<h3 class="text-white text-center ">LOG IN</h3>
+  </div>
+
+<div class="container p-4" style="background-color:#D9D9D9; height:300px; width:300px; margin-top:5%; border-radius:25px;">
+<form method="post" action=".">
+  {% csrf_token %}
+
+  {{ form.as_p }}
+  <button class="btn btn-success text-white " style="width:100%">LOG IN</button>
+</form>
+  <div class="pt-2">
+    <button class="btn btn-primary text-white" style="background-color:#6272F9; width:100%"><a href="{% url 'signup' %}" class="text-white" style="text-decoration:none;">DON'T HAVE ACCOUNT?<br> REGISTER HERE</a></button>
+    </div>
+  </div>
+
+{% endblock %}
